@@ -56,7 +56,7 @@ head(names(finalDataSet))
 ```
 In this step, the final dataset is ready, waiting to be summarized.
 ## 5. Averaged dataset
-This is the last step and what is required here is create a second dataset with tidy data and needs to contain the average of each variable (all the feature calculations), for each 6 activities (walking, sitting, laying, ...) and each subject (all the 30 people that took part in the experiment). The resulting dataset should have exactly 180 observations (30 subjects X 6 activities) and each row will have the mean for each of the features variables.
+This is the last step and what is required here is create a second dataset with tidy data and needs to contain the average of each variable (all the feature calculations), for each activities (walking, sitting, laying, ...) and each subject (all the subjects that took part in the experiment). The resulting dataset should have exactly 180 observations (30 subjects X 6 activities) and each row will have the mean for each of the features variables.
 ```{r }
 averagedDataSet <- finalDataSet %>% 
     group_by(subject.id, activity.id, activity.name) %>% 
