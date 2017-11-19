@@ -92,5 +92,6 @@ averagedDataSet <- finalDataSet %>%
     summarize_at(meanAndSTDFeatures, mean) %>%
     as.data.frame()
 averagedDataSet
+write.table(averagedDataSet, file = "./data/step5-tidy-dataset.txt", sep = " ", row.names = F)
 
 # dim(averagedDataSet) # Should have 180 observations (30 subjects X 6 activities), each with the respective mean
