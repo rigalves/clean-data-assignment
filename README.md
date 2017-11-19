@@ -6,7 +6,7 @@ The complete code can be seen here: [https://github.com/rigalves/clean-data-assi
 
 # Instructions
 ## run_analysis.R
-Following the _reproducible research principle_ in data science, the actual data files are not included in this repository. Instead, the script downloads the rawest form of the files, in this case, a zip file. After that the file is unzipped and included in the "./data" folder.
+Following the _reproducible research principle_ in data science, the actual data files are not included in this repository. Instead, the script downloads the rawest form of the files, in this case, a zip file. After that, the file is unzipped and included in the "./data" folder.
 ## Dependencies
 The only dependency is the [dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) library. To install the library, execute the following code:
 ```{r }
@@ -56,12 +56,14 @@ head(names(finalDataSet))
 ```
 In this step, the final dataset is ready, waiting to be summarized.
 ## 5. Averaged dataset
-This is the last step and what is required here is create a second dataset with tidy data and needs to contain the average of each variable (all the feature calculations), for each 6 activities (walking, sitting, laying, ...) and each subject (all the 30 people that took part in the experiment)
+This is the last step and what is required here is create a second dataset with tidy data and needs to contain the average of each variable (all the feature calculations), for each 6 activities (walking, sitting, laying, ...) and each subject (all the 30 people that took part in the experiment). The resulting dataset should have exactly 180 observations (30 subjects X 6 activities) and each row will have the mean for each of the features variables.
 ```{r }
 averagedDataSet <- finalDataSet %>% 
     group_by(subject.id, activity.id, activity.name) %>% 
     summarize_at(meanAndSTDFeatures, mean) %>%
     as.data.frame()
+dim(averagedDataSet)
+[1] 180  89
 ```
 Finally, a text file is created with the resulting tidy data:
 ```{r }
